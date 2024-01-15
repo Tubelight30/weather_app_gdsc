@@ -15,7 +15,7 @@ class WeatherCard extends StatelessWidget {
         gradient: const LinearGradient(
           begin: Alignment(0.00, -1.00),
           end: Alignment(0, 1),
-          colors: [Color(0xFF3D2C8E), Color(0xFF9D52AC)],
+          colors: [Color(0xFF3D2C8E), Color.fromARGB(255, 146, 77, 160)],
         ),
         borderRadius: BorderRadius.circular(50),
         boxShadow: [
@@ -44,6 +44,9 @@ class WeatherCard extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white),
           ),
+          Text('${_weather.date?.hour}:00 hrs',
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 15, color: Colors.white),)
         ],
       ),
     );

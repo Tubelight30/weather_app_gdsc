@@ -31,7 +31,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
           gradient: LinearGradient(
             begin: Alignment(0.00, -1.00),
             end: Alignment(0, 1),
-            colors: [Color(0xFF3D2C8E), Color(0xFF9D52AC)],
+            colors: [Color(0xFF3D2C8E), Color.fromARGB(255, 120, 82, 172)],
           ),
         ),
         child: Padding(
@@ -41,6 +41,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
             children: <Widget>[
               TextField(
                 style: const TextStyle(color: Colors.white),
+                textAlign: TextAlign.center,
                 onChanged: (value) {
                   cityName = value;
                 },
@@ -74,7 +75,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             ),
                             const SizedBox(height: 20),
                             Text(
-                              '${_weather!.temperature!.celsius!.toStringAsFixed(0)}°C',
+                              '${_weather!.temperature!.celsius!.toStringAsFixed(0)}°C in ${_weather?.areaName}, ${_weather?.country}',
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontSize: 18,
