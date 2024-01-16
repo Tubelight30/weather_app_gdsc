@@ -12,4 +12,8 @@ Map<String, IconData> iconMapping = {
   '04n': WeatherIcons.cloudy,
   '50d': WeatherIcons.fog,
   '50n': WeatherIcons.fog,
+  '13n': WeatherIcons.snow,
+  '13d': WeatherIcons.night_snow,
+  '10d': WeatherIcons.rain,
+  '10n': WeatherIcons.night_rain,
 };

@@ -44,9 +44,11 @@ class WeatherCard extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white),
           ),
-          Text('${_weather.date?.hour}:00 hrs',
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontSize: 15, color: Colors.white),)
+          Text(
+            '${_weather.date?.hour}:00 hrs',
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 15, color: Colors.white),
+          )
         ],
       ),
     );
