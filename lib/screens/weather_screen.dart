@@ -2,26 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:weather/weather.dart';
 import 'package:weathertesting/Widgets/weather_card.dart';
 import 'package:weathertesting/weather_icons/icon_mapping.dart';
+import 'package:weathertesting/services/weather_service.dart';
 
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
-
   @override
   _WeatherScreenState createState() => _WeatherScreenState();
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  String key = '5861f5e99ec5235d04ab2bdfab4da8a1';
-  late WeatherFactory ws;
+  final WeatherService ws = WeatherService();
   Weather? _weather;
   List<Weather> _forecast = [];
   String cityName = '';
-
-  @override
-  void initState() {
-    super.initState();
-    ws = WeatherFactory(key);
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +48,8 @@ class _WeatherScreenState extends State<WeatherScreen> {
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () async {
-                  _weather = await ws.currentWeatherByCityName(cityName);
-                  _forecast = await ws.fiveDayForecastByCityName(cityName);
+                  _weather = await ws.getCurrentWeather(cityName);
+                  _forecast = await ws.getFiveDayForecast(cityName);
                   setState(() {});
                 },
                 child: const Text('Show Weather and Forecast'),
@@ -88,7 +81,7 @@ class _WeatherScreenState extends State<WeatherScreen> {
                               style: const TextStyle(
                                   fontSize: 18, color: Colors.white),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                           ],
                         ),
                         _weather == null
