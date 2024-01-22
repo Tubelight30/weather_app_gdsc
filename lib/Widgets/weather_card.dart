@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:weather/weather.dart';
-import 'package:weathertesting/weather_icons/icon_mapping.dart';
 
 class WeatherCard extends StatelessWidget {
-  final Weather _weather;
-  const WeatherCard({super.key, required Weather weather}) : _weather = weather;
+  const WeatherCard({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,28 +24,28 @@ class WeatherCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Icon(
-            iconMapping[_weather.weatherIcon],
+            Icons.cloud,
             color: Colors.white,
           ),
-          const SizedBox(height: 10),
+          SizedBox(height: 10),
           Text(
-            '${_weather.temperature!.celsius!.toStringAsFixed(0)}°C',
+            'Temp in °C',
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 18, color: Colors.white),
+            style: TextStyle(fontSize: 18, color: Colors.white),
           ),
           Text(
-            '${_weather.weatherMain}',
+            'Weather',
             textAlign: TextAlign.center,
             style: TextStyle(color: Colors.white),
           ),
           Text(
-            '${_weather.date?.hour}:00 hrs',
+            'time in hrs',
             textAlign: TextAlign.center,
-            style: const TextStyle(fontSize: 15, color: Colors.white),
+            style: TextStyle(fontSize: 15, color: Colors.white),
           )
         ],
       ),

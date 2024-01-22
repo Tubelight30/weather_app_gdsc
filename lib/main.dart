@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:weathertesting/Widgets/weather_card.dart';
 import 'package:weathertesting/screens/weather_screen.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WeatherScreen(),
+      home: const WeatherCard(),
     );
   }
 }

@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:weather/weather.dart';
-import 'package:weathertesting/Widgets/weather_card.dart';
-import 'package:weathertesting/weather_icons/icon_mapping.dart';
-import 'package:weathertesting/services/weather_service.dart';
-
 class WeatherScreen extends StatefulWidget {
   const WeatherScreen({super.key});
   @override
@@ -11,9 +6,11 @@ class WeatherScreen extends StatefulWidget {
 }
 
 class _WeatherScreenState extends State<WeatherScreen> {
-  final WeatherService ws = WeatherService();
-  Weather? _weather;
-  List<Weather> _forecast = [];
+  //TODO: WeatherService
+  // final WeatherService ws = WeatherService();
+  // WeatherData _weatherData = WeatherData();
+  // WeatherModel? _weather;
+  // List<Weather> _forecast = [];
   String cityName = '';
 
   @override
@@ -48,57 +45,60 @@ class _WeatherScreenState extends State<WeatherScreen> {
               const SizedBox(height: 10),
               ElevatedButton(
                 onPressed: () async {
-                  _weather = await ws.getCurrentWeather(cityName);
-                  _forecast = await ws.getFiveDayForecast(cityName);
+                  // ws.weatherResponse(cityName: "Lucknow");
+                  //TODO await future of weather data
+                  //_weather = await _weatherData.getWeatherData(city: cityName);
+                  // _weather = await ws.getCurrentWeather(cityName);
+                  //_forecast = await ws.getFiveDayForecast(cityName);
                   setState(() {});
                 },
                 child: const Text('Show Weather and Forecast'),
               ),
-              _weather == null
-                  ? Container()
-                  : Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Column(
-                          children: [
-                            Icon(
-                              iconMapping[_weather!.weatherIcon],
-                              color: Colors.white,
-                              size: 40,
-                            ),
-                            const SizedBox(height: 20),
-                            Text(
-                              '${_weather!.temperature!.celsius!.toStringAsFixed(0)}°C in ${_weather?.areaName}, ${_weather?.country}',
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Text(
-                              '${_weather!.weatherMain}',
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  fontSize: 18, color: Colors.white),
-                            ),
-                            const SizedBox(height: 10),
-                          ],
-                        ),
-                        _weather == null
-                            ? Container()
-                            : Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: _forecast.take(3).map(
-                                  (dayForecast) {
-                                    return WeatherCard(
-                                      weather: dayForecast,
-                                    );
-                                  },
-                                ).toList(),
-                              ),
-                      ],
-                    ),
+              // _weather == null
+              //     ? Container()
+              //     : const Column(
+              //         crossAxisAlignment: CrossAxisAlignment.center,
+              //         children: [
+              //           Column(
+              //             children: [
+              //               // Icon(
+              //               //   iconMapping[_weather!.weatherIcon],
+              //               //   color: Colors.white,
+              //               //   size: 40,
+              //               // ),
+              //               SizedBox(height: 20),
+              //               Text(
+              //                 'Temp(°C) in city, country',
+              //                 textAlign: TextAlign.center,
+              //                 style: TextStyle(
+              //                   fontSize: 18,
+              //                   color: Colors.white,
+              //                 ),
+              //               ),
+              //               Text(
+              //                 'Weather description',
+              //                 textAlign: TextAlign.center,
+              //                 style: TextStyle(
+              //                     fontSize: 18, color: Colors.white),
+              //               ),
+              //               SizedBox(height: 10),
+              //             ],
+              //           ),
+              //           // _weather == null
+              //           //     ? Container()
+              //           //     : Row(
+              //           //         mainAxisAlignment:
+              //           //             MainAxisAlignment.spaceEvenly,
+              //           //         children: _forecast.take(3).map(
+              //           //           (dayForecast) {
+              //           //             return WeatherCard(
+              //           //               weather: dayForecast,
+              //           //             );
+              //           //           },
+              //           //         ).toList(),
+              //           //       ),
+              //         ],
+              //       ),
             ],
           ),
         ),
